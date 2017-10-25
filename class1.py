@@ -3,7 +3,7 @@ import os
 import string
 import datetime
 import random
-
+import re
 
 class Point():
     def __init__(self, x, y):
@@ -205,6 +205,7 @@ class Admin(User):
         return "i am " + self.name + "," + str(self.id) + "\tgroup" + self.group
 
 
+
 def create_accout(type):
     if type == "user":
         return User(type, 1)
@@ -234,6 +235,19 @@ def demo_random():
     a = [1, 2, 4, 5, 6, 7, 9]
     random.shuffle(a)
     print a
+    print random._ceil(100.11)
+    print random.gauss
+def demo_regix():
+    str1 = "mksmkd1991ooosps"
+    pattern = re.compile("[\w]*91")
+    print pattern.findall(str1)
+    resl = re.match(pattern, str1)
+    print resl.group()
+    str2 = "232322@qq.com;ndsidns@sina.com;sddffs@intel.com;sadsooo@163.com;2323298884@163.com;92093293@qq.com"
+    pattern2 = re.compile('^\d+@qq\.com')
+    resl2 =  re.search(pattern2, str2)
+    print resl2.group(1)
+    # print pattern2.search(str2).group()
 
 
 if __name__ == "__main__":
@@ -250,5 +264,6 @@ if __name__ == "__main__":
     # User = create_accout("Admin")
     # print User
     # demo_exception()
-    demo_random()
+    # demo_random()
+    demo_regix()
 

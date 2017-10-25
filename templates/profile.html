@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<br>profile id {{uid}} has not resource!!<br>
+{% for i in range(0, 5): %}
+<li>{{ i }}</li>
+{% endfor %}
+
+{% for color in colors: %}
+{{loop.index}}{{color}}<br>
+{%endfor%}
+
+{% filter upper%}
+{% for k,v in dict.items(): %}
+2{{k,v}}<br>
+{%endfor%}
+{% endfilter%}
+
+{% macro render_color(color) %}
+<div> This is color:{{color}}</div><br>
+    {{caller()}}
+{% endmacro %}
+
+{% for color in colors: %}
+    {% call render_color(color) %}
+        render_color_demo
+    {% endcall %}
+{% endfor %}
+<body>
+{# 这里隐藏了 #}
+</body>
+</html>
